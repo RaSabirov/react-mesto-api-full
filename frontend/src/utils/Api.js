@@ -1,6 +1,4 @@
-const API_KEY = '010caeb4-70a3-4d0b-af59-4d5b702fcb93';
-
-class Api {
+export class Api {
   constructor({ url, headers }) {
     this._url = url;
     this._headers = headers;
@@ -70,19 +68,9 @@ class Api {
 
   // Получаем статус лайка на сервере
   changeLikeCardStatus(cardId, isLiked) {
-    {
       return fetch(`${this._url}/cards/${cardId}/likes`, {
         method: `${isLiked ? 'PUT' : 'DELETE'}`,
         headers: this._headers,
       }).then(this._errorHandler);
-    }
   }
 }
-
-export const api = new Api({
-  url: 'https://mesto.nomoreparties.co/v1/cohort-33',
-  headers: {
-    authorization: API_KEY,
-    'content-type': 'application/json',
-  },
-});

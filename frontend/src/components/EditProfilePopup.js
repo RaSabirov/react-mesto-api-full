@@ -66,7 +66,6 @@ function EditProfilePopup({ isOpen, onClose, onUpdateUser, isLoading }) {
         <input
           placeholder="Введите описание"
           className="popup__input popup__input_type_job"
-          name="aboutMe"
           required
           autoComplete="off"
           type="text"

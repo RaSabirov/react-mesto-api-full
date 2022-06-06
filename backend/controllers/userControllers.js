@@ -5,7 +5,7 @@ const ErrorConfict = require('../errors/ErrorConfict');
 const ErrorValidation = require('../errors/ErrorValidation');
 const ErrorUnauthorized = require('../errors/ErrorUnauthorized');
 const ErrorNotFound = require('../errors/ErrorNotFound');
-const { SALT_ROUNDS, JWT_SECRET } = require('../config');
+const { SALT_ROUNDS, jwtKey } = require('../config');
 
 const loginUser = async (req, res, next) => {
   try {
@@ -18,7 +18,7 @@ const loginUser = async (req, res, next) => {
     if (!isValid) {
       return next(new ErrorUnauthorized('Не верный логин или пароль'));
     }
-    const token = jwt.sign({ _id: foundUser._id }, JWT_SECRET, { expiresIn: '7d' });
+    const token = jwt.sign({ _id: foundUser._id }, jwtKey, { expiresIn: '7d' });
     return res.send({ token });
   } catch (err) {
     return next(err);

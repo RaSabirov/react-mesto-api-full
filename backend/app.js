@@ -1,7 +1,9 @@
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
+const cors = require('cors');
 const { routes } = require('./routes/routes');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -17,6 +19,19 @@ app.use((req, res, next) => {
   console.log(req.method, req.path);
   next();
 });
+
+// app.use(cors());
+
+app.use(
+  cors({
+    origin: [
+      'http://localhost:3000',
+      'http://mesto.sbrvrvl.nomoredomains.xyz',
+      'https://mesto.sbrvrvl.nomoredomains.xyz',
+    ],
+    credentials: true,
+  }),
+);
 
 app.use(requestLogger); // подключаем логгер запросов
 

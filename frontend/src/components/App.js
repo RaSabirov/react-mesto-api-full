@@ -1,10 +1,10 @@
 import React from 'react';
-import { Route, Switch, Redirect, history } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
 import Main from './Main';
 import ImagePopup from './ImagePopup';
-import { api } from '../utils/Api';
+import { Api } from '../utils/Api';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import EditProfilePopup from './EditProfilePopup';
 import EditAvatarPopup from './EditAvatarPopup';
@@ -51,6 +51,15 @@ function App() {
   // =================================================
   // ===== РАБОТА С API ЗАПРОСАМИ
   // =================================================
+
+  const api = new Api({
+    url: 'https://mesto.nomoreparties.co/v1/cohort-33',
+    headers: {
+      authorization: `${localStorage.getItem('jwt')}`,
+      'content-type': 'application/json',
+    },
+  });
+
   // Эффект который будет совершать запрос в API за отображением карточек
   React.useEffect(() => {
     api
