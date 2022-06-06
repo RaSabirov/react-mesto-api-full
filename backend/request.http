@@ -1,0 +1,19 @@
+GET http://localhost:3000/
+
+###
+
+POST http://localhost:3000/users
+content-Type: application/json
+{
+    "name": "Тестовый пользователь",
+    "about": "info",
+    "avatar": "https://vjoy.cc/wp-content/uploads/2020/09/bezymyannyjkvytstsk.jpg"
+}
+
+###
+
+GET http://localhost:3000/users/
+
+###
+
+GET http://localhost:3000/users/6284d3f09147e6f1d5684ee0
