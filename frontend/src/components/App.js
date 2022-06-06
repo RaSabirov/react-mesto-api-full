@@ -53,7 +53,7 @@ function App() {
   // =================================================
 
   const api = new Api({
-    url: 'https://mesto.nomoreparties.co/v1/cohort-33',
+    url: 'https://mesto.sbrvrvl.nomoredomains.xyz',
     headers: {
       authorization: `${localStorage.getItem('jwt')}`,
       'content-type': 'application/json',
