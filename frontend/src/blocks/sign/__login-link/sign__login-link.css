@@ -1,0 +1,13 @@
+.sign__login-link {
+  color: white;
+  text-decoration: none;
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+}
+
+.sign__login-link:hover {
+  opacity: 0.8;
+}

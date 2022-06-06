@@ -1,0 +1,10 @@
+.notFound__link {
+  color: #ffffff;
+  transition: ease 0.5s;
+  display: flex;
+  justify-content: center;
+}
+
+.notFound__link:hover {
+  opacity: 0.6;
+}

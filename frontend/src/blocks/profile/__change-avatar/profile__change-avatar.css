@@ -1,0 +1,19 @@
+.profile__change-avatar {
+  cursor: pointer;
+  z-index: 5;
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-height: 100%;
+  min-width: 100%;
+  background: url('../../../images/editprofile.svg');
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  opacity: 0;
+  transition: ease 0.5s;
+}
+
+.profile__change-avatar :hover {
+  opacity: 0.6;
+}

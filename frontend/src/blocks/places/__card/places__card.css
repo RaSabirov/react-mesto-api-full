@@ -1,0 +1,14 @@
+.places__card {
+  display: grid;
+  grid-gap: 17px;
+  grid-template-columns: repeat(auto-fit, minmax(282px, 1fr));
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+@media screen and (max-width: 425px) {
+  .places__card {
+    grid-gap: 18px;
+  }
+}

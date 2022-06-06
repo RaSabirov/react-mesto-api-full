@@ -1,0 +1,13 @@
+.profile__avatar-container {
+  position: relative;
+  margin-right: 30px;
+  border-radius: 50%;
+}
+
+.profile__avatar-container:hover .profile__change-avatar {
+  opacity: 1;
+}
+
+.profile__avatar-container:hover .profile__image {
+  opacity: 0.3;
+}

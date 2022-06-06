@@ -1,0 +1,25 @@
+.places__del-btn {
+  background: url('../../../images/delbtn.svg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+  padding: 0;
+  transition: ease 0.5s;
+  position: absolute;
+  z-index: 5;
+  width: 18px;
+  height: 19px;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  visibility: visible;
+}
+
+.places__del-btn:hover {
+  opacity: 0.6;
+}
+
+.places__del-btn_hide {
+  visibility: hidden;
+}

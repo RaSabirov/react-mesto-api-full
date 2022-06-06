@@ -1,0 +1,25 @@
+.sign__input {
+  border-bottom: 2px solid #cccccc;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  background-color: inherit;
+  color: white;
+  outline: none;
+  line-height: 17px;
+  font-style: normal;
+  font-weight: normal;
+  margin-bottom: 30px;
+  padding: 0 0 10px;
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+}
+.sign__input::placeholder {
+  color: #cccccc;
+}
+
+/* Убираем дефолтный(браузерный) стиль на автозаполнение */
+.sign__input:-webkit-autofill,
+.sign__input:-webkit-autofill:focus {
+  -webkit-text-fill-color: white;
+  transition: background-color 5000s ease-in-out 0s;
+}

@@ -1,0 +1,8 @@
+.places__card-item {
+  position: relative;
+  border-radius: 10px;
+  background-color: #ffffff;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
