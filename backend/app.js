@@ -20,7 +20,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// app.use(cors());
+app.use(requestLogger); // подключаем логгер запросов
 
 app.use(
   cors({
@@ -32,8 +32,6 @@ app.use(
     credentials: true,
   }),
 );
-
-app.use(requestLogger); // подключаем логгер запросов
 
 app.get('/crash-test', () => {
   setTimeout(() => {
