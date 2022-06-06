@@ -22,16 +22,17 @@ app.use((req, res, next) => {
 
 app.use(requestLogger); // подключаем логгер запросов
 
-app.use(
-  cors({
-    origin: [
-      'http://localhost:3000',
-      'http://mesto.sbrvrvl.nomoredomains.xyz',
-      'https://mesto.sbrvrvl.nomoredomains.xyz',
-    ],
-    credentials: true,
-  }),
-);
+// app.use(
+//   cors({
+//     origin: [
+//       'localhost:3000',
+//       'http://mesto.sbrvrvl.nomoredomains.xyz',
+//       'https://mesto.sbrvrvl.nomoredomains.xyz',
+//     ],
+//     credentials: true,
+//   }),
+// );
+app.use(cors());
 
 app.get('/crash-test', () => {
   setTimeout(() => {
