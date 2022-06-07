@@ -1,4 +1,6 @@
-export const BASE_URL = 'https://api.mesto.sbrvrvl.nomoredomains.xyz/';
+// export const BASE_URL = 'https://api.mesto.sbrvrvl.nomoredomains.xyz/';
+export const BASE_URL = 'http://localhost:3000/';
+
 
 const request = ({ url, method = 'POST', token, body }) => {
   const config = {

@@ -13,7 +13,7 @@ export class Api {
 
   // Получаем карточки с сервера
   getInitialCards() {
-    return fetch(`${this._url}/cards`, {
+    return fetch(`${this._url}cards`, {
       method: 'GET',
       headers: this._headers,
     }).then(this._errorHandler);
@@ -21,14 +21,14 @@ export class Api {
 
   // Получаем информацию о пользователе
   getUserData() {
-    return fetch(`${this._url}/users/me`, {
+    return fetch(`${this._url}users/me`, {
       method: 'GET',
       headers: this._headers,
     }).then(this._errorHandler);
   }
 
   setUserAvatar(avatar) {
-    return fetch(`${this._url}/users/me/avatar`, {
+    return fetch(`${this._url}users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -38,7 +38,7 @@ export class Api {
   }
 
   setUserInfo(name, about) {
-    return fetch(`${this._url}/users/me`, {
+    return fetch(`${this._url}users/me`, {
       method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
@@ -49,14 +49,14 @@ export class Api {
   }
 
   deleteCard(cardId) {
-    return fetch(`${this._url}/cards/${cardId}`, {
+    return fetch(`${this._url}cards/${cardId}`, {
       method: 'DELETE',
       headers: this._headers,
     }).then(this._errorHandler);
   }
 
   addCard(name, link) {
-    return fetch(`${this._url}/cards`, {
+    return fetch(`${this._url}cards`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify({
@@ -68,7 +68,7 @@ export class Api {
 
   // Получаем статус лайка на сервере
   changeLikeCardStatus(cardId, isLiked) {
-      return fetch(`${this._url}/cards/${cardId}/likes`, {
+      return fetch(`${this._url}cards/${cardId}/likes`, {
         method: `${isLiked ? 'PUT' : 'DELETE'}`,
         headers: this._headers,
       }).then(this._errorHandler);

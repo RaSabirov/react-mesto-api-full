@@ -3,7 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { errors } = require('celebrate');
 const helmet = require('helmet');
-// const cors = require('cors');
+const cors = require('cors');
 const { routes } = require('./routes/routes');
 const errorHandler = require('./middlewares/errorHandler');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -32,7 +32,7 @@ app.use(requestLogger); // подключаем логгер запросов
 //     credentials: true,
 //   }),
 // );
-// app.use(cors());
+app.use(cors());
 
 app.get('/crash-test', () => {
   setTimeout(() => {

@@ -53,7 +53,7 @@ function App() {
   // =================================================
 
   const api = new Api({
-    url: 'https://mesto.sbrvrvl.nomoredomains.xyz',
+    url: ApiAuth.BASE_URL,
     headers: {
       authorization: `${localStorage.getItem('jwt')}`,
       'content-type': 'application/json',
@@ -79,7 +79,7 @@ function App() {
       })
       .catch((err) => alert('Ошибка загрузки данных с сервера:', err));
   }, []);
-
+  
   // Эффект который будет проверять токен при загрузки страницы,
   // чтобы не выбивало сессию при ребуте страницы
   React.useEffect(() => {
