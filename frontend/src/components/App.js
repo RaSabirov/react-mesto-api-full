@@ -114,12 +114,12 @@ function App() {
       });
   }
 
-  function handleUpdateUser(data) {
+  function handleUpdateUser({name, about}) {
     setIsLoadingEditPopup(true);
     api
-      .setUserInfo(data.name, data.about)
-      .then((res) => {
-        setCurrentUser(res);
+      .setUserInfo(name, about)
+      .then((data) => {
+        setCurrentUser(data);
         closeAllPopups();
       })
       .catch((err) => alert('Ошибка загрузки данных пользователя:', err))
@@ -128,12 +128,12 @@ function App() {
       });
   }
 
-  function handleUpdateAvatar(data) {
+  function handleUpdateAvatar({avatar}) {
     setIsLoadingAvatarPopup(true);
     api
-      .setUserAvatar(data.avatar)
-      .then((res) => {
-        setCurrentUser(res);
+      .setUserAvatar(avatar)
+      .then((data) => {
+        setCurrentUser(data);
         closeAllPopups();
       })
       .catch((err) => alert('Ошибка обновления аватара:', err))
@@ -142,10 +142,10 @@ function App() {
       });
   }
 
-  function handleAddPlaceSubmit(data) {
+  function handleAddPlaceSubmit({ name, link}) {
     setIsLoadingAddPopup(true);
     api
-      .addCard(data.name, data.link)
+      .addCard(name, link)
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
@@ -198,7 +198,7 @@ function App() {
         .then((res) => {
           if (res) {
             setLoggedIn(true);
-            setUserEmail(res.data.email);
+            setUserEmail(res.email);
             history.push('/');
           }
         })
