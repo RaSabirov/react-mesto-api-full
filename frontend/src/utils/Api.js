@@ -73,4 +73,8 @@ export class Api {
         headers: this._headers,
       }).then(this._errorHandler);
   }
+
+  getAppData() {
+    return Promise.all([this.getInitialCards(), this.getUserData()])
+  }
 }

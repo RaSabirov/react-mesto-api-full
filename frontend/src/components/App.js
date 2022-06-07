@@ -60,35 +60,28 @@ function App() {
     },
   });
 
-  // Эффект который будет совершать запрос в API за отображением карточек
+  // Отображаем контент из API (карточки и инфа о пользователе) если пользователь залогинился
   React.useEffect(() => {
-    api
-      .getInitialCards()
-      .then((data) => {
-        setCards(data);
+    if(loggedIn) {
+      api
+      .getAppData()
+      .then(([cards, user]) => {
+        setCurrentUser(user);
+        setCards(cards);
       })
-      .catch((err) => alert(`Ошибка загрузки данных с сервера: ${err}`));
-  }, []);
-
-  // Отображаем информацию о пользователе из API
-  React.useEffect(() => {
-    api
-      .getUserData()
-      .then((data) => {
-        setCurrentUser(data);
-      })
-      .catch((err) => alert('Ошибка загрузки данных с сервера:', err));
-  }, []);
+      .catch((err) => alert(`Ошибка в получении данных: ${err}`));
+    }
+  }, [loggedIn]);
   
   // Эффект который будет проверять токен при загрузки страницы,
   // чтобы не выбивало сессию при ребуте страницы
   React.useEffect(() => {
     tokenCheck();
-  }, [loggedIn]);
+  }, []);
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some((i) => i._id === currentUser._id);
+    const isLiked = card.likes.some((id) => id === currentUser._id);
 
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api
@@ -96,7 +89,7 @@ function App() {
       .then((newCard) => {
         setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
       })
-      .catch((err) => alert('Ошибка лайка/дизлайка карточки:', err));
+      .catch((err) => alert(`Ошибка лайка/дизлайка карточки: ${err}`));
   }
 
   function handleDeleteCardSubmit() {
@@ -108,7 +101,7 @@ function App() {
         setCards(newCards);
         closeAllPopups();
       })
-      .catch((err) => alert('Ошибка удаления карточки:', err))
+      .catch((err) => alert(`${err} - Нельзя удалить чужую карточку`))
       .finally(() => {
         setIsLoadingDeletePopup(false);
       });
@@ -122,7 +115,7 @@ function App() {
         setCurrentUser(data);
         closeAllPopups();
       })
-      .catch((err) => alert('Ошибка загрузки данных пользователя:', err))
+      .catch((err) => alert(`Ошибка загрузки данных пользователя: ${err}`))
       .finally(() => {
         setIsLoadingEditPopup(false);
       });
@@ -136,7 +129,7 @@ function App() {
         setCurrentUser(data);
         closeAllPopups();
       })
-      .catch((err) => alert('Ошибка обновления аватара:', err))
+      .catch((err) => alert(`Ошибка обновления аватара: ${err}`))
       .finally(() => {
         setIsLoadingAvatarPopup(false);
       });
@@ -150,7 +143,7 @@ function App() {
         setCards([newCard, ...cards]);
         closeAllPopups();
       })
-      .catch((err) => alert('Ошибка добавления карточки:', err))
+      .catch((err) => alert(`Ошибка добавления карточки: ${err}`))
       .finally(() => {
         setIsLoadingAddPopup(false);
       });
@@ -169,7 +162,7 @@ function App() {
       .catch((err) => {
         setIsInfoTooltipOpen(true);
         setIsRegistrationSuccess(false);
-        console.log('Ошибка регистрации:', err);
+        console.log(`Ошибка регистрации: ${err}`);
       });
   }
 
@@ -187,7 +180,7 @@ function App() {
       .catch((err) => {
         setIsInfoTooltipOpen(true);
         setIsRegistrationSuccess(false);
-        console.log('Ошибка входа в систему:', err);
+        console.log(`Ошибка входа в систему: ${err}`);
       });
   }
 
@@ -203,7 +196,7 @@ function App() {
           }
         })
         .catch((err) => {
-          console.log('Ошибка проверки токена:', err);
+          console.log(`Ошибка проверки токена: ${err}`);
         });
     }
   }
