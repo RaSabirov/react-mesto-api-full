@@ -69,7 +69,7 @@ function App() {
         setCurrentUser(user);
         setCards(cards);
       })
-      .catch((err) => alert(`Ошибка в получении данных: ${err}`));
+      .catch((err) => console.log(`Ошибка в получении данных: ${err}`));
     }
   }, [loggedIn]);
   
@@ -77,7 +77,7 @@ function App() {
   // чтобы не выбивало сессию при ребуте страницы
   React.useEffect(() => {
     tokenCheck();
-  }, []);
+  }, [loggedIn]);
 
   function handleCardLike(card) {
     // Снова проверяем, есть ли уже лайк на этой карточке
@@ -89,7 +89,7 @@ function App() {
       .then((newCard) => {
         setCards((state) => state.map((c) => (c._id === card._id ? newCard : c)));
       })
-      .catch((err) => alert(`Ошибка лайка/дизлайка карточки: ${err}`));
+      .catch((err) => console.log(`Ошибка лайка/дизлайка карточки: ${err}`));
   }
 
   function handleDeleteCardSubmit() {
@@ -101,7 +101,7 @@ function App() {
         setCards(newCards);
         closeAllPopups();
       })
-      .catch((err) => alert(`${err} - Нельзя удалить чужую карточку`))
+      .catch((err) => console.log(`${err} - Нельзя удалить чужую карточку`))
       .finally(() => {
         setIsLoadingDeletePopup(false);
       });
@@ -115,7 +115,7 @@ function App() {
         setCurrentUser(data);
         closeAllPopups();
       })
-      .catch((err) => alert(`Ошибка загрузки данных пользователя: ${err}`))
+      .catch((err) => console.log(`Ошибка загрузки данных пользователя: ${err}`))
       .finally(() => {
         setIsLoadingEditPopup(false);
       });
@@ -153,7 +153,6 @@ function App() {
     ApiAuth.register(email, password)
       .then((res) => {
         if (res) {
-          setLoggedIn(true);
           setIsRegistrationSuccess(true);
           setIsInfoTooltipOpen(true);
           history.push('/sign-in');
