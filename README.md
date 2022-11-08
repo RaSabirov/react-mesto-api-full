@@ -65,10 +65,5 @@ npm install
 npm start
 ```
 
-### Ссылки для подключения:
-Проект: https://mesto.sbrvrvl.nomoredomains.xyz/sign-in
-</br>
 API проекта: https://api.mesto.sbrvrvl.nomoredomains.xyz
-</br>
-IP адрес публичного сервера:
-51.250.97.109
+
